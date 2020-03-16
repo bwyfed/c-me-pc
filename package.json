@@ -4,6 +4,7 @@
   "description": "c-me pc app",
   "main": "app/main/index.js",
   "scripts": {
+    "start": "concurrently \"npm run start:render\" \"wait-on http://localhost:8080/ && npm run start:main\" ",
     "start:main": "electron .",
     "start:render": "cd app/renderer/src/main && npm run serve"
   },
@@ -19,7 +20,9 @@
   },
   "homepage": "https://github.com/bwyfed/c-me-pc#readme",
   "devDependencies": {
-    "electron": "^8.1.1"
+    "concurrently": "^5.1.0",
+    "electron": "^8.1.1",
+    "wait-on": "^4.0.1"
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0"
