@@ -8,7 +8,8 @@
     "start:main": "electron .",
     "start:render": "cd app/renderer/src/main && npm run serve",
     "build": "cd app/renderer/src/main && npm run build",
-    "pack:win": "npm run build && electron-builder build --win --ia32"
+    "pack:wi": "npm run build && electron-builder build --win --ia32",
+    "pack:win": " electron-builder build --win --ia32"
   },
   "repository": {
     "type": "git",
