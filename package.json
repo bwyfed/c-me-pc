@@ -6,7 +6,9 @@
   "scripts": {
     "start": "concurrently \"npm run start:render\" \"wait-on http://localhost:8080/ && npm run start:main\" ",
     "start:main": "electron .",
-    "start:render": "cd app/renderer/src/main && npm run serve"
+    "start:render": "cd app/renderer/src/main && npm run serve",
+    "build": "cd app/renderer/src/main && npm run build",
+    "pack:win": "npm run build && electron-builder build --win --ia32"
   },
   "repository": {
     "type": "git",
@@ -21,10 +23,49 @@
   "homepage": "https://github.com/bwyfed/c-me-pc#readme",
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "cross-env": "^7.0.2",
     "electron": "^8.1.1",
+    "electron-builder": "^22.4.1",
+    "electron-builder-squirrel-windows": "^22.4.1",
     "wait-on": "^4.0.1"
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0"
+  },
+  "build": {
+    "appId": "com.geektime.mercurius",
+    "productName": "CME",
+    "files": "app",
+    "asar": false,
+    "extraFiles": [
+      "app/renderer/**/src"
+    ],
+    "directories": {
+      "buildResources": "resource",
+      "output": "release"
+    },
+    "copyright": "Copyright © 2020 dragon",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "resources/icon.icns"
+    },
+    "win": {
+      "icon": "resources/favicon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "language": "2052",
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "squirrelWindows": {
+      "iconUrl": "https://raw.githubusercontent.com/dengyaolong/geektime-electron/master/img/icon.ico"
+    }
   }
 }

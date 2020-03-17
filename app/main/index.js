@@ -3,5 +3,5 @@ const { create: createMainWindow } = require('./windows/main');
 const { create: createLoginWindow } = require('./windows/login');
 
 app.on('ready', () => {
-  createLoginWindow();
+  createMainWindow();
 });
