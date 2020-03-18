@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
-const dest = '../../pages/main';
+const dest = '../../release';
 fs.removeSync(dest);
-fs.moveSync('./dist', dest);
+fs.moveSync('./release', dest);
+fs.removeSync('./dist');
